@@ -1,0 +1,328 @@
+#ifndef __CUIF_LTE_RX_STATIC_CC_CMD_H__
+#define __CUIF_LTE_RX_STATIC_CC_CMD_H__
+
+// ----------------- CUIF_LTE_RX_STATIC_CC_CMD Register Definition -------------------
+typedef volatile struct {
+    kal_uint32 CELL_INFO0;                                                                // 0x0000
+    kal_uint32 CELL_INFO1;                                                                // 0x0004
+    kal_uint32 RRC_INFO0;                                                                 // 0x0008
+    kal_uint32 RRC_INFO1;                                                                 // 0x000C
+    kal_uint32 RRC_INFO2;                                                                 // 0x0010
+    kal_uint32 AP01_SP_FACTOR;                                                            // 0x0014
+    kal_uint32 AP23_SP_FACTOR;                                                            // 0x0018
+    kal_uint32 IC_LST;                                                                    // 0x001C
+    kal_uint32 DL_HARQ0;                                                                  // 0x0020
+    kal_uint32 DL_HARQ1;                                                                  // 0x0024
+    kal_uint32 BRP_INFO0;                                                                 // 0x0028
+    kal_uint32 BRP_RESERVED_0;                                                            // 0x002C
+    kal_uint32 BRP_RESERVED_1;                                                            // 0x0030
+    kal_uint32 OC_EXIST_INFO;                                                             // 0x0034
+    kal_uint32 PBC_INFO;                                                                  // 0x0038
+    kal_uint32 EPDCCH_INFO1;                                                              // 0x003C
+    kal_uint32 EPDCCH_SET0_PRB_IDX[2];                                                    // 0x0040..0x0044
+    kal_uint32 EPDCCH_SET1_PRB_IDX[2];                                                    // 0x0048..0x004C
+} CUIF_LTE_RX_STATIC_CC_CMD_REGS, *PCUIF_LTE_RX_STATIC_CC_CMD_REGS;
+
+// ---------- CUIF_LTE_RX_STATIC_CC_CMD word-offset  ----------
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0                                            (0)
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO1                                            (1)
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0                                             (2)
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO1                                             (3)
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2                                             (4)
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR                                        (5)
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR                                        (6)
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_IC_LST                                                (7)
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_DL_HARQ0                                              (8)
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_DL_HARQ1                                              (9)
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_BRP_INFO0                                             (10)
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_BRP_RESERVED_0                                        (11)
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_BRP_RESERVED_1                                        (12)
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_OC_EXIST_INFO                                         (13)
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_PBC_INFO                                              (14)
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1                                          (15)
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET0_PRB_IDX(i)                                (16 + (i))
+#define O_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET1_PRB_IDX(i)                                (18 + (i))
+
+// ---------- CELL_INFO0 bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_MIB_KNOWN                                  (31)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_MIB_KNOWN                                  (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_MIB_KNOWN                                  (0x80000000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_DL_BW                                      (28)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_DL_BW                                      (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_DL_BW                                      (0x70000000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_TDD_UDC                                    (25)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_TDD_UDC                                    (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_TDD_UDC                                    (0x0E000000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_TDD_SSP                                    (21)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_TDD_SSP                                    (4)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_TDD_SSP                                    (0x01E00000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_NBR_CELL_CFG                               (17)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_NBR_CELL_CFG                               (2)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_NBR_CELL_CFG                               (0x00060000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_CELL_ID                                    (8)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_CELL_ID                                    (9)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_CELL_ID                                    (0x0001FF00)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_UL_BW                                      (5)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_UL_BW                                      (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_UL_BW                                      (0x000000E0)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_TX_NUM                                     (2)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_TX_NUM                                     (2)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_TX_NUM                                     (0x0000000C)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_FRAME_STRUCT                               (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_FRAME_STRUCT                               (2)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO0_FRAME_STRUCT                               (0x00000003)
+
+// ---------- CELL_INFO1 bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO1_N_PHICH_GRP                                (4)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO1_N_PHICH_GRP                                (6)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO1_N_PHICH_GRP                                (0x000003F0)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO1_PHICH_NG                                   (2)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO1_PHICH_NG                                   (2)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO1_PHICH_NG                                   (0x0000000C)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO1_PHICH_DU                                   (1)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO1_PHICH_DU                                   (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO1_PHICH_DU                                   (0x00000002)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO1_CP_TYPE                                    (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO1_CP_TYPE                                    (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_CELL_INFO1_CP_TYPE                                    (0x00000001)
+
+// ---------- RRC_INFO0 bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_ALT_TBS_IDX                                 (30)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_ALT_TBS_IDX                                 (2)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_ALT_TBS_IDX                                 (0xC0000000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_PCSI_REPORT_MODE                            (26)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_PCSI_REPORT_MODE                            (4)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_PCSI_REPORT_MODE                            (0x3C000000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_ACSI_REPORT_MODE                            (22)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_ACSI_REPORT_MODE                            (4)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_ACSI_REPORT_MODE                            (0x03C00000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_FLAG_ALT_4TX_CB                             (21)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_FLAG_ALT_4TX_CB                             (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_FLAG_ALT_4TX_CB                             (0x00200000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_PMI_RI_REPORT                               (20)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_PMI_RI_REPORT                               (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_PMI_RI_REPORT                               (0x00100000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_PA                                          (17)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_PA                                          (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_PA                                          (0x000E0000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_PB                                          (15)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_PB                                          (2)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_PB                                          (0x00018000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_PC                                          (10)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_PC                                          (5)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_PC                                          (0x00007C00)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_EPRE_OFFSET                                 (7)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_EPRE_OFFSET                                 (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_EPRE_OFFSET                                 (0x00000380)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_TM_MODE                                     (3)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_TM_MODE                                     (4)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_TM_MODE                                     (0x00000078)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_CROSS_CARRIER_SCHED_CC_IDX                  (1)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_CROSS_CARRIER_SCHED_CC_IDX                  (2)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_CROSS_CARRIER_SCHED_CC_IDX                  (0x00000006)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_CROSS_CARRIER_SCHED_EN                      (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_CROSS_CARRIER_SCHED_EN                      (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO0_CROSS_CARRIER_SCHED_EN                      (0x00000001)
+
+// ---------- RRC_INFO1 bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO1_DMTC_OCCASION                               (28)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO1_DMTC_OCCASION                               (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO1_DMTC_OCCASION                               (0x10000000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO1_FLAG_CSI_SF_PATTERN_CFG_R12                 (27)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO1_FLAG_CSI_SF_PATTERN_CFG_R12                 (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO1_FLAG_CSI_SF_PATTERN_CFG_R12                 (0x08000000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO1_CSIRS_CONFIG                                (18)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO1_CSIRS_CONFIG                                (5)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO1_CSIRS_CONFIG                                (0x007C0000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO1_CSIRS_TX_NUM                                (16)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO1_CSIRS_TX_NUM                                (2)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO1_CSIRS_TX_NUM                                (0x00030000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO1_CSIRS_ZERO_POWER_BITMAP                     (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO1_CSIRS_ZERO_POWER_BITMAP                     (16)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO1_CSIRS_ZERO_POWER_BITMAP                     (0x0000FFFF)
+
+// ---------- RRC_INFO2 bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_DL_PRB_OFFSET                               (16)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_DL_PRB_OFFSET                               (8)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_DL_PRB_OFFSET                               (0x00FF0000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_DL_PRB_NUM                                  (8)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_DL_PRB_NUM                                  (8)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_DL_PRB_NUM                                  (0x0000FF00)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_PDSCH_START                                 (5)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_PDSCH_START                                 (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_PDSCH_START                                 (0x000000E0)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_CIF_PRESENT                                 (4)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_CIF_PRESENT                                 (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_CIF_PRESENT                                 (0x00000010)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_SRS_REQ_EXIST_DCI12                         (3)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_SRS_REQ_EXIST_DCI12                         (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_SRS_REQ_EXIST_DCI12                         (0x00000008)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_SCELL_IDX                                   (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_SCELL_IDX                                   (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_RRC_INFO2_SCELL_IDX                                   (0x00000007)
+
+// ---------- AP01_SP_FACTOR bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_5                                   (15)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_5                                   (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_5                                   (0x00038000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_4                                   (12)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_4                                   (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_4                                   (0x00007000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_3                                   (9)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_3                                   (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_3                                   (0x00000E00)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_2                                   (6)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_2                                   (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_2                                   (0x000001C0)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_1                                   (3)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_1                                   (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_1                                   (0x00000038)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_0                                   (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_0                                   (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_AP01_SP_FACTOR_RE_0                                   (0x00000007)
+
+// ---------- AP23_SP_FACTOR bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_5                                   (15)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_5                                   (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_5                                   (0x00038000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_4                                   (12)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_4                                   (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_4                                   (0x00007000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_3                                   (9)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_3                                   (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_3                                   (0x00000E00)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_2                                   (6)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_2                                   (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_2                                   (0x000001C0)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_1                                   (3)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_1                                   (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_1                                   (0x00000038)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_0                                   (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_0                                   (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_AP23_SP_FACTOR_RE_0                                   (0x00000007)
+
+// ---------- IC_LST bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_IC_LST_IC_SORT_LIST_ORDER_CHG                         (31)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_IC_LST_IC_SORT_LIST_ORDER_CHG                         (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_IC_LST_IC_SORT_LIST_ORDER_CHG                         (0x80000000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_IC_LST_CELL_2                                         (8)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_IC_LST_CELL_2                                         (4)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_IC_LST_CELL_2                                         (0x00000F00)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_IC_LST_CELL_1                                         (4)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_IC_LST_CELL_1                                         (4)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_IC_LST_CELL_1                                         (0x000000F0)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_IC_LST_CELL_0                                         (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_IC_LST_CELL_0                                         (4)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_IC_LST_CELL_0                                         (0x0000000F)
+
+// ---------- DL_HARQ0 bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_DL_HARQ0_REPLY_FAKE_ACK                               (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_DL_HARQ0_REPLY_FAKE_ACK                               (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_DL_HARQ0_REPLY_FAKE_ACK                               (0x00000001)
+
+// ---------- DL_HARQ1 bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_DL_HARQ1_SINGLE_HARQ_RESET_TB2                        (16)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_DL_HARQ1_SINGLE_HARQ_RESET_TB2                        (16)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_DL_HARQ1_SINGLE_HARQ_RESET_TB2                        (0xFFFF0000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_DL_HARQ1_SINGLE_HARQ_RESET_TB1                        (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_DL_HARQ1_SINGLE_HARQ_RESET_TB1                        (16)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_DL_HARQ1_SINGLE_HARQ_RESET_TB1                        (0x0000FFFF)
+
+// ---------- BRP_INFO0 bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_BRP_INFO0_BYPASS_CAT2_DCI_QICHK                       (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_BRP_INFO0_BYPASS_CAT2_DCI_QICHK                       (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_BRP_INFO0_BYPASS_CAT2_DCI_QICHK                       (0x00000001)
+
+// ---------- BRP_RESERVED_0 bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_BRP_RESERVED_0_BRP_RESERVED                           (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_BRP_RESERVED_0_BRP_RESERVED                           (32)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_BRP_RESERVED_0_BRP_RESERVED                           (0xFFFFFFFF)
+
+// ---------- BRP_RESERVED_1 bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_BRP_RESERVED_1_BRP_RESERVED                           (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_BRP_RESERVED_1_BRP_RESERVED                           (32)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_BRP_RESERVED_1_BRP_RESERVED                           (0xFFFFFFFF)
+
+// ---------- OC_EXIST_INFO bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_OC_EXIST_INFO_SP_CTRL_UPDATE_IND                      (2)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_OC_EXIST_INFO_SP_CTRL_UPDATE_IND                      (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_OC_EXIST_INFO_SP_CTRL_UPDATE_IND                      (0x00000004)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_OC_EXIST_INFO_CRS_COLLIDE                             (1)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_OC_EXIST_INFO_CRS_COLLIDE                             (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_OC_EXIST_INFO_CRS_COLLIDE                             (0x00000002)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_OC_EXIST_INFO_OC_EXIST                                (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_OC_EXIST_INFO_OC_EXIST                                (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_OC_EXIST_INFO_OC_EXIST                                (0x00000001)
+
+// ---------- PBC_INFO bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_PBC_INFO_PBC_DIST                                     (7)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_PBC_INFO_PBC_DIST                                     (8)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_PBC_INFO_PBC_DIST                                     (0x00007F80)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_PBC_INFO_AGG_BW                                       (3)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_PBC_INFO_AGG_BW                                       (4)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_PBC_INFO_AGG_BW                                       (0x00000078)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_PBC_INFO_MEAS_BW                                      (1)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_PBC_INFO_MEAS_BW                                      (2)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_PBC_INFO_MEAS_BW                                      (0x00000006)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_PBC_INFO_PBC_TBL_SEL                                  (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_PBC_INFO_PBC_TBL_SEL                                  (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_PBC_INFO_PBC_TBL_SEL                                  (0x00000001)
+
+// ---------- EPDCCH_INFO1 bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_START_SYMBOL                             (26)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_START_SYMBOL                             (3)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_START_SYMBOL                             (0x1C000000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET1_SCRAM_SEQ_INIT                      (17)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET1_SCRAM_SEQ_INIT                      (9)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET1_SCRAM_SEQ_INIT                      (0x03FE0000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET1_TRANS_TYPE                          (16)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET1_TRANS_TYPE                          (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET1_TRANS_TYPE                          (0x00010000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET1_NUM_PRB_PAIR                        (14)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET1_NUM_PRB_PAIR                        (2)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET1_NUM_PRB_PAIR                        (0x0000C000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET1_ENABLE                              (13)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET1_ENABLE                              (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET1_ENABLE                              (0x00002000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET0_SCRAM_SEQ_INIT                      (4)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET0_SCRAM_SEQ_INIT                      (9)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET0_SCRAM_SEQ_INIT                      (0x00001FF0)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET0_TRANS_TYPE                          (3)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET0_TRANS_TYPE                          (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET0_TRANS_TYPE                          (0x00000008)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET0_NUM_PRB_PAIR                        (1)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET0_NUM_PRB_PAIR                        (2)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET0_NUM_PRB_PAIR                        (0x00000006)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET0_ENABLE                              (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET0_ENABLE                              (1)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_INFO1_SET0_ENABLE                              (0x00000001)
+
+// ---------- EPDCCH_SET0_PRB_IDX bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET0_PRB_IDX_EPDCCH_SET0_PRB_IDX3              (21)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET0_PRB_IDX_EPDCCH_SET0_PRB_IDX3              (7)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET0_PRB_IDX_EPDCCH_SET0_PRB_IDX3              (0x0FE00000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET0_PRB_IDX_EPDCCH_SET0_PRB_IDX2              (14)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET0_PRB_IDX_EPDCCH_SET0_PRB_IDX2              (7)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET0_PRB_IDX_EPDCCH_SET0_PRB_IDX2              (0x001FC000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET0_PRB_IDX_EPDCCH_SET0_PRB_IDX1              (7)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET0_PRB_IDX_EPDCCH_SET0_PRB_IDX1              (7)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET0_PRB_IDX_EPDCCH_SET0_PRB_IDX1              (0x00003F80)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET0_PRB_IDX_EPDCCH_SET0_PRB_IDX0              (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET0_PRB_IDX_EPDCCH_SET0_PRB_IDX0              (7)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET0_PRB_IDX_EPDCCH_SET0_PRB_IDX0              (0x0000007F)
+
+// ---------- EPDCCH_SET1_PRB_IDX bit-field ----------
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET1_PRB_IDX_EPDCCH_SET1_PRB_IDX3              (21)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET1_PRB_IDX_EPDCCH_SET1_PRB_IDX3              (7)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET1_PRB_IDX_EPDCCH_SET1_PRB_IDX3              (0x0FE00000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET1_PRB_IDX_EPDCCH_SET1_PRB_IDX2              (14)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET1_PRB_IDX_EPDCCH_SET1_PRB_IDX2              (7)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET1_PRB_IDX_EPDCCH_SET1_PRB_IDX2              (0x001FC000)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET1_PRB_IDX_EPDCCH_SET1_PRB_IDX1              (7)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET1_PRB_IDX_EPDCCH_SET1_PRB_IDX1              (7)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET1_PRB_IDX_EPDCCH_SET1_PRB_IDX1              (0x00003F80)
+#define P_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET1_PRB_IDX_EPDCCH_SET1_PRB_IDX0              (0)
+#define L_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET1_PRB_IDX_EPDCCH_SET1_PRB_IDX0              (7)
+#define M_CUIF_LTE_RX_STATIC_CC_CMD_EPDCCH_SET1_PRB_IDX_EPDCCH_SET1_PRB_IDX0              (0x0000007F)
+
+#endif // __CUIF_LTE_RX_STATIC_CC_CMD_H__

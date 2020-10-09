@@ -1,0 +1,26 @@
+[Default]
+ELM
+On
+Buffer
+
+[Modem_Type]
+elm
+
+[Class]
+ELM_Basic_Info_H ON
+
+[String]
+
+
+[Message]
+INFO EMI_ELM_SET_R_TH		ELM_Basic_Info_H	"[INFO][ELM][MDMCU][EMI][Read Latency Threshold] US_CNT %l us, R_Threshold %l ns"
+INFO EMI_ELM_SET_W_TH		ELM_Basic_Info_H	"[INFO][ELM][MDMCU][EMI][Write Latency Threshold] US_CNT %l us, W_Threshold %l ns"
+INFO DMA_ELM_SET_R_TH		ELM_Basic_Info_H	"[INFO][ELM][MDIFRA][EMI][Read Latency Threshold] US_CNT %l us, R_Threshold %l ns"
+INFO DMA_ELM_SET_W_TH		ELM_Basic_Info_H	"[INFO][ELM][MDIFRA][EMI][Write Latency Threshold] US_CNT %l us, W_Threshold %l ns"
+warn EMI_ELM_R_LAT_WARN		ELM_Basic_Info_H	"[WARN][ELM][MDMCU][EMI][M3][Read Latency Violation] US_CNT %l us, L1 R_ave_lat %l ns, R_Threhsold %l ns, L2 R_Latency %l T, R_tran %l, MD_DVFS_CON %xl, AP_VCORE_DVFS_CURR %xl, AP_VCORE_DVFS_LAST %xl"
+warn EMI_ELM_W_LAT_WARN		ELM_Basic_Info_H	"[WARN][ELM][MDMCU][EMI][M3][Write Latency Violation] US_CNT %l us, L1 W_ave_lat %l ns, W_Threhsold %l ns, L2 W_Latency %l T, w_tran %l, MD_DVFS_CON %xl, AP_VCORE_DVFS_CURR %xl, AP_VCORE_DVFS_LAST %xl"
+warn DMA_ELM_R_LAT_WARN		ELM_Basic_Info_H	"[WARN][ELM][MDIFRA][EMI][M4][Read Latency Violation] US_CNT %l us, L1 R_ave_lat %l ns, R_Threhsold %l ns, L2 R_Latency %l T, R_tran %l"
+warn DMA_ELM_W_LAT_WARN		ELM_Basic_Info_H	"[WARN][ELM][MDIFRA][EMI][M4][Write Latency Violation] US_CNT %l us, L1 W_ave_lat %l ns, W_Threhsold %l ns, L2 W_Latency %l T, R_tran %l"
+warn EMI_TXZQ_WARN			ELM_Basic_Info_H	"[WARN][ELM][MDMCU][EMI][M3][TXZQ] US_CNT %l us, MD systick %l T, TXZQ %l T"
+warn EMI_AP_DVFS_WARN		ELM_Basic_Info_H	"[WARN][ELM][MDMCU][EMI][M3][Vcore DVFS] US_CNT %l us, MD systick %l T, Vcore DVFS %l T"
+

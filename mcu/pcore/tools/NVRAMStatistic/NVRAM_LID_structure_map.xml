@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DB version="1.0">
+	<NVRAM_LIDs>
+		<NVRAM_LID name="NVRAM_EF_SML_LID" type_name="nvram_sml_context_struct" is_struct="true" />
+		<NVRAM_LID name="NVRAM_EF_SIM_LOCK_LID" type_name="nvram_sml_tmo_context_struct" is_struct="true" />
+		<NVRAM_LID name="NVRAM_EF_SML_GBLOB_LID" type_name="nvram_sml_gblob_s_context_struct" is_struct="true" />
+		<NVRAM_LID name="NVRAM_EF_SML_GBLOB_KEY_LID" type_name="nvram_sml_gblob_key_s_context_struct" is_struct="true" />
+		<NVRAM_LID name="NVRAM_EF_SML_S_LID" type_name="nvram_sml_context_s_struct" is_struct="true" />
+	</NVRAM_LIDs>
+</DB>

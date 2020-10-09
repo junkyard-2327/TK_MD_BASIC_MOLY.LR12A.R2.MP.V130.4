@@ -1,0 +1,36 @@
+&MEM_CLASS="AXI"
+; do AP to MD path enable
+LOCAL &BASE_ADDR_INFRA_CFG_AO
+LOCAL &BASE_ADDR_INFRA
+LOCAL &tmp
+&BASE_ADDR_INFRA_CFG_AO=0x10001370
+&BASE_ADDR_INFRA=0x10001200
+
+;;; If you don't want MD2AP disable, mark the following ;;;
+; Enable md2peri_protect 
+; Write 0x1000_12A8[6] = 1'b1
+D.S &MEM_CLASS:(&BASE_ADDR_INFRA+0xA8) %LE %LONG 0x40
+wait 1.ms
+
+; Clear peri2md_protect
+; Write 0x1000_12A4[7] = 1'b1
+D.S &MEM_CLASS:(&BASE_ADDR_INFRA+0xA4) %LE %LONG 0x80
+wait 1.ms
+
+; Polling peri2md_protect_ready
+; Wait 0x1000_1228[7] = 1'b0 
+&tmp=0x1
+WHILE &tmp!=0x0
+(
+	&tmp=DATA.LONG(&MEM_CLASS:(&BASE_ADDR_INFRA+0x28))&(1<<7)
+;	PRINT &tmp
+)
+
+; Set reg_ap2md_dummy[0] = 1'b0 
+; Write 0x1000_1370[0] = 1'b0
+; 1'b0: AP access MD
+; 1'b1: AP cannot aceess
+&tmp=DATA.LONG(&MEM_CLASS:(&BASE_ADDR_INFRA_CFG_AO))&(0xFFFFFFFE)
+D.S &MEM_CLASS:(&BASE_ADDR_INFRA_CFG_AO) %LE %LONG &tmp 
+
+PRINT "Success to enable AP2MD/disable MD2AP !!!"

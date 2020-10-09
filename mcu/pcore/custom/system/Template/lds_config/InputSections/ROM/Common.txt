@@ -1,0 +1,241 @@
+        TLBREFILL_EXCEPTION$$Base = . ;
+        KEEP(* (TLBREFILL_EXCEPTION))
+        KEEP(* (NOP_TLBREFILL_EXCEPTION_SECTION))	
+        TLBREFILL_EXCEPTION$$End = . ;
+
+        . = Image$$ROM$$Base + 0x100;
+        CACHEERR_EXCEPTION$$Base = . ;
+        KEEP(* (CACHEERR_EXCEPTION))
+        KEEP(* (NOP_CACHEERR_EXCEPTION_SECTION))	
+        CACHEERR_EXCEPTION$$End = . ;
+
+        . = Image$$ROM$$Base + 0x180;
+        GENERAL_EXCEPTION$$Base = . ;
+        /*KEEP(* (VECTOR_ROUTINE))*/
+        KEEP(* (GENERAL_EXCEPTION))
+        KEEP(* (NOP_GENERAL_EXCEPTION_SECTION))	
+        GENERAL_EXCEPTION$$End = . ;
+		
+        . = Image$$ROM$$Base + 0x200;
+        INTERRUPT_VECTOR$$Base =  . ;
+        KEEP(* (INTERRUPT_VECTOR))
+        INTERRUPT_VECTOR$$End = . ;
+       
+
+        /* FILL(0x7000003f); */ /* force fill sdbbp to reserve LMA space */ /* Do we need it ? */
+
+        * (DRAM_EX_ROCODE)  /*CODE_PROTECT*/
+        * (SNORCODE*)
+        * (SECOND_PART*)
+        * (EXCLUDE_FILE (*lib_a-memcpy.o *lib_a-memset.o) .text*)
+        * (EMIINITCODE)
+        * (i.*)
+        * (.ARM.extab)
+        * (CRYPTO_ASM)
+        KEEP(* (Keep_CODE))
+        KEEP(* (NOP_Keep_CODE_SECTION))		
+		
+        . = ALIGN(64);
+        DYNAMIC_SECTION_L2CACHE_LOCK_X$$Base = .;
+        DYNAMIC_SECTION_L2CACHE_LOCK_X_ROCODE$$Base = .;
+        * (DYNAMIC_SECTION_L2CACHE_LOCK_W_IDLE_ROCODE*)        /* L2 cache lock! align base and end to 64 bytes */
+        KEEP(* (NOP_DYNAMIC_SECTION_L2CACHE_LOCK_W_IDLE_ROCODE_SECTION))	
+        . = ALIGN(64);
+        DYNAMIC_SECTION_L2CACHE_LOCK_X_ROCODE$$Limit = .;
+        DYNAMIC_SECTION_L2CACHE_LOCK_X_ROCODE$$Length = ABSOLUTE(DYNAMIC_SECTION_L2CACHE_LOCK_X_ROCODE$$Limit - DYNAMIC_SECTION_L2CACHE_LOCK_X_ROCODE$$Base);
+		
+        DYNAMIC_SECTION_L2CACHE_LOCK_X_DATA$$Base = .;
+        /* * (DYNAMIC_SECTION_L2CACHE_LOCK_W_IDLE_RODATA) */
+        /* * (DYNAMIC_SECTION_L2CACHE_LOCK_W_IDLE_RW) */
+        . = ALIGN(64);
+        DYNAMIC_SECTION_L2CACHE_LOCK_X_DATA$$Limit = .;
+        DYNAMIC_SECTION_L2CACHE_LOCK_X_DATA$$Length = ABSOLUTE(DYNAMIC_SECTION_L2CACHE_LOCK_X_DATA$$Limit - DYNAMIC_SECTION_L2CACHE_LOCK_X_DATA$$Base);
+		
+        DYNAMIC_SECTION_L2CACHE_LOCK_X_ZI$$Base = .;
+        /* * (DYNAMIC_SECTION_L2CACHE_LOCK_W_IDLE_ZI) */
+        . = ALIGN(64);
+        DYNAMIC_SECTION_L2CACHE_LOCK_X_ZI$$Limit = .;
+        DYNAMIC_SECTION_L2CACHE_LOCK_X_ZI$$Length = ABSOLUTE(DYNAMIC_SECTION_L2CACHE_LOCK_X_ZI$$Limit - DYNAMIC_SECTION_L2CACHE_LOCK_X_ZI$$Base);
+		
+        DYNAMIC_SECTION_L2CACHE_LOCK_X$$Limit = .;
+        DYNAMIC_SECTION_L2CACHE_LOCK_X$$Length = ABSOLUTE(DYNAMIC_SECTION_L2CACHE_LOCK_X$$Limit - DYNAMIC_SECTION_L2CACHE_LOCK_X$$Base);
+
+
+        . = ALIGN(64);
+        DYNAMIC_SECTION_L2CACHE_LOCK_0$$Base = .;
+        DYNAMIC_SECTION_L2CACHE_LOCK_0_ROCODE$$Base = .;
+        * (DYNAMIC_SECTION_L2CACHE_LOCK_W2_ROCODE*)        /* L2 cache lock! align base and end to 64 bytes */
+        KEEP(* (NOP_DYNAMIC_SECTION_L2CACHE_LOCK_W2_ROCODE_SECTION))
+        . = ALIGN(64);
+        DYNAMIC_SECTION_L2CACHE_LOCK_0_ROCODE$$Limit = .;
+        DYNAMIC_SECTION_L2CACHE_LOCK_0_ROCODE$$Length = ABSOLUTE(DYNAMIC_SECTION_L2CACHE_LOCK_0_ROCODE$$Limit - DYNAMIC_SECTION_L2CACHE_LOCK_0_ROCODE$$Base);
+		
+        DYNAMIC_SECTION_L2CACHE_LOCK_0_DATA$$Base = .;
+        /* * (DYNAMIC_SECTION_L2CACHE_LOCK_W2_RODATA) */
+        /* * (DYNAMIC_SECTION_L2CACHE_LOCK_W2_RW) */
+        . = ALIGN(64);
+        DYNAMIC_SECTION_L2CACHE_LOCK_0_DATA$$Limit = .;
+        DYNAMIC_SECTION_L2CACHE_LOCK_0_DATA$$Length = ABSOLUTE(DYNAMIC_SECTION_L2CACHE_LOCK_0_DATA$$Limit - DYNAMIC_SECTION_L2CACHE_LOCK_0_DATA$$Base);
+		
+        DYNAMIC_SECTION_L2CACHE_LOCK_0_ZI$$Base = .;
+        /* * (DYNAMIC_SECTION_L2CACHE_LOCK_W2_ZI) */
+        . = ALIGN(64);
+        DYNAMIC_SECTION_L2CACHE_LOCK_0_ZI$$Limit = .;
+        DYNAMIC_SECTION_L2CACHE_LOCK_0_ZI$$Length = ABSOLUTE(DYNAMIC_SECTION_L2CACHE_LOCK_0_ZI$$Limit - DYNAMIC_SECTION_L2CACHE_LOCK_0_ZI$$Base);
+		
+        DYNAMIC_SECTION_L2CACHE_LOCK_0$$Limit = .;
+        DYNAMIC_SECTION_L2CACHE_LOCK_0$$Length = ABSOLUTE(DYNAMIC_SECTION_L2CACHE_LOCK_0$$Limit - DYNAMIC_SECTION_L2CACHE_LOCK_0$$Base);
+
+
+
+
+        
+        /***** remap to EMI in 92 *****/
+        *libkal.a: (INTSRAM_ROCODE*)   
+        * (INTSRAM_ROCODE*)            
+        * (L2SRAM_ROCODE)
+        KEEP(* (NOP_L2SRAM_ROCODE_SECTION))
+        /***** remap to EMI in 92 *****/
+
+        ROM_RODATA$$Base = .; /* RODATA should be put in the end of ROM section. CGA will not parsing symbols after this linker symbol */
+        * (.rodata*)
+#if !defined(__AMMS_DRDI__)
+        /* DRDI 2G */
+        * (DRDIRODATA.2G.SET0.*)
+        * (DRDIRODATA.2G.SET1.*)
+        * (DRDIRODATA.2G.SET2.*)
+        * (DRDIRODATA.2G.SET3.*)
+        * (DRDIRODATA.2G.SET4.*)
+        * (DRDIRODATA.2G.SET5.*)
+        * (DRDIRODATA.2G.SET6.*)
+        * (DRDIRODATA.2G.SET7.*)
+        * (DRDIRODATA.2G.SET8.*)
+        * (DRDIRODATA.2G.SET9.*)
+        * (DRDIRODATA.2G.SET10.*)
+        * (DRDIRODATA.2G.SET11.*)
+        * (DRDIRODATA.2G.SET12.*)
+        * (DRDIRODATA.2G.SET13.*)
+        * (DRDIRODATA.2G.SET14.*)
+        * (DRDIRODATA.2G.SET15.*)
+        /* DRDI 3G FDD */
+        * (DRDIRODATA.3GFDD.SET0.*)
+        * (DRDIRODATA.3GFDD.SET1.*)
+        * (DRDIRODATA.3GFDD.SET2.*)
+        * (DRDIRODATA.3GFDD.SET3.*)
+        * (DRDIRODATA.3GFDD.SET4.*)
+        * (DRDIRODATA.3GFDD.SET5.*)
+        * (DRDIRODATA.3GFDD.SET6.*)
+        * (DRDIRODATA.3GFDD.SET7.*)
+        * (DRDIRODATA.3GFDD.SET8.*)
+        * (DRDIRODATA.3GFDD.SET9.*)
+        * (DRDIRODATA.3GFDD.SET10.*)
+        * (DRDIRODATA.3GFDD.SET11.*)
+        * (DRDIRODATA.3GFDD.SET12.*)
+        * (DRDIRODATA.3GFDD.SET13.*)
+        * (DRDIRODATA.3GFDD.SET14.*)
+        * (DRDIRODATA.3GFDD.SET15.*)
+        /* DRDI 3G TDD */
+        * (DRDIRODATA.3GTDD.SET0.*)
+        * (DRDIRODATA.3GTDD.SET1.*)
+        * (DRDIRODATA.3GTDD.SET2.*)
+        * (DRDIRODATA.3GTDD.SET3.*)
+        * (DRDIRODATA.3GTDD.SET4.*)
+        * (DRDIRODATA.3GTDD.SET5.*)
+        * (DRDIRODATA.3GTDD.SET6.*)
+        * (DRDIRODATA.3GTDD.SET7.*)
+        * (DRDIRODATA.3GTDD.SET8.*)
+        * (DRDIRODATA.3GTDD.SET9.*)
+        * (DRDIRODATA.3GTDD.SET10.*)
+        * (DRDIRODATA.3GTDD.SET11.*)
+        * (DRDIRODATA.3GTDD.SET12.*)
+        * (DRDIRODATA.3GTDD.SET13.*)
+        * (DRDIRODATA.3GTDD.SET14.*)
+        * (DRDIRODATA.3GTDD.SET15.*)
+        /* DRDI MMRF */
+        * (DRDIRODATA.MMRF.SET0.*)
+        * (DRDIRODATA.MMRF.SET1.*)
+        * (DRDIRODATA.MMRF.SET2.*)
+        * (DRDIRODATA.MMRF.SET3.*)
+        * (DRDIRODATA.MMRF.SET4.*)
+        * (DRDIRODATA.MMRF.SET5.*)
+        * (DRDIRODATA.MMRF.SET6.*)
+        * (DRDIRODATA.MMRF.SET7.*)
+        * (DRDIRODATA.MMRF.SET8.*)
+        * (DRDIRODATA.MMRF.SET9.*)
+        * (DRDIRODATA.MMRF.SET10.*)
+        * (DRDIRODATA.MMRF.SET11.*)
+        * (DRDIRODATA.MMRF.SET12.*)
+        * (DRDIRODATA.MMRF.SET13.*)
+        * (DRDIRODATA.MMRF.SET14.*)
+        * (DRDIRODATA.MMRF.SET15.*)
+        /* C2K */
+        * (DRDIRODATA.C2K.SET0.*)
+        * (DRDIRODATA.C2K.SET1.*)
+        * (DRDIRODATA.C2K.SET2.*)
+        * (DRDIRODATA.C2K.SET3.*)
+        * (DRDIRODATA.C2K.SET4.*)
+        * (DRDIRODATA.C2K.SET5.*)
+        * (DRDIRODATA.C2K.SET6.*)
+        * (DRDIRODATA.C2K.SET7.*)
+        * (DRDIRODATA.C2K.SET8.*)
+        * (DRDIRODATA.C2K.SET9.*)
+        * (DRDIRODATA.C2K.SET10.*)
+        * (DRDIRODATA.C2K.SET11.*)
+        * (DRDIRODATA.C2K.SET12.*)
+        * (DRDIRODATA.C2K.SET13.*)
+        * (DRDIRODATA.C2K.SET14.*)
+        * (DRDIRODATA.C2K.SET15.*)
+        /* LTE */
+        * (DRDIRODATA.LTE.SET0.*)
+        * (DRDIRODATA.LTE.SET1.*)
+        * (DRDIRODATA.LTE.SET2.*)
+        * (DRDIRODATA.LTE.SET3.*)
+        * (DRDIRODATA.LTE.SET4.*)
+        * (DRDIRODATA.LTE.SET5.*)
+        * (DRDIRODATA.LTE.SET6.*)
+        * (DRDIRODATA.LTE.SET7.*)
+        * (DRDIRODATA.LTE.SET8.*)
+        * (DRDIRODATA.LTE.SET9.*)
+        * (DRDIRODATA.LTE.SET10.*)
+        * (DRDIRODATA.LTE.SET11.*)
+        * (DRDIRODATA.LTE.SET12.*)
+        * (DRDIRODATA.LTE.SET13.*)        
+        * (DRDIRODATA.LTE.SET14.*)
+        * (DRDIRODATA.LTE.SET15.*)
+#endif /* end of !defined(__AMMS_DRDI__) */
+        /***** remap to EMI in 92 *****/
+        * (EMIINITCONST)       
+        * (INTERNBLOCK2_RO)  
+        * (L2SRAM_RODATA)
+        /***** remap to EMI in 92 *****/
+        . = ALIGN(CACHELINESIZE); /* the end of RO should be 32 byte alignment */	 	
+        ROM_RODATA$$Limit = .;
+        ROM_RODATA$$Length = ABSOLUTE(ROM_RODATA$$Limit - ROM_RODATA$$Base); 
+
+		
+        /********************** A. need to be confirmed in 93 **********************/
+        * (.MIPS.abiflags*)
+        * (.gnu.attributes)
+        * (.mdebug.abi32)
+        * (.pdr)
+        * (.reginfo)
+        * (.rel.dyn)
+        * (esal_code)
+
+        /********************** B. need to be moved to right section in 93 **********************/        
+        /********************** C. will be removed in 93 **********************/
+        * (L2SRAM_L2C_ROCODE)
+        KEEP(* (NOP_L2SRAM_L2C_ROCODE_SECTION))
+        * (L2SRAM_L2C_RODATA)
+        * (L2SRAM_L2NC_ROCODE)	
+        KEEP(* (NOP_L2SRAM_L2NC_ROCODE_SECTION))	
+        * (L2SRAM_L2NC_RODATA)
+        * (ISPRAM_ROCODE_CORE2*)
+        KEEP(* (NOP_ISPRAM_ROCODE_CORE2_SECTION))
+        * (DSPRAM_RODATA_CORE2*)
+
+#if defined(__RF_SCAN_FOR_DESENSE_TEST__)
+        * (BANK9_INPUTSECTION)
+        KEEP(* (NOP_BANK9_INPUTSECTION_SECTION))
+#endif
+        /********************** end **********************/
